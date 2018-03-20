@@ -1,0 +1,13 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/scss/font-awesome';
+// Core variables and mixins
+@import "variables.scss";
+@import "mixins.scss";
+// Global CSS
+@import "global.scss";
+// Components
+@import "masthead.scss";
+@import "social.scss";
+@import "bootstrap-overrides.scss";
+@import "home.scss";

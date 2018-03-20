@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voisinade.io : veille tech entre voisins !{% endblock %}
+
+
+{% block body %}
+
+    <div class="overlay"></div>
+
+    <div class="masthead">
+        <div class="masthead-bg"></div>
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 my-auto">
+                    <div class="masthead-content text-white py-5 py-md-0">
+                        <h1 class="mb-3">Coming Soon!</h1>
+                        <p class="mb-5">We're working hard to finish the development of this site. Our target launch
+                            date is <strong>January 2019</strong>! Sign up for updates using the form below!</p>
+
+                        <p>
+                            {{ form(form) }}
+                        </p>
+
+                        <script type="text/javascript" src="https://app.mailjet.com/statics/js/widget.modal.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
