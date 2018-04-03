@@ -1,0 +1,19 @@
+
+###> symfony/framework-bundle ###
+.env
+/public/bundles/
+/public/build/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+/%PUBLIC_DIR%/build/
+###< symfony/webpack-encore-pack ###
+
+.idea/
