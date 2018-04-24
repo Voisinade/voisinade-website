@@ -40,7 +40,7 @@ class FrontController extends Controller
             $subscriber = new \Welp\MailchimpBundle\Subscriber\Subscriber($subscriber->getEmail(), [], ['language' => 'fr']);
             $this->get('event_dispatcher')->dispatch(
                 SubscriberEvent::EVENT_SUBSCRIBE,
-                new SubscriberEvent(281, $subscriber)
+                new SubscriberEvent('1de9e88e9e', $subscriber)
             );
         }
 
