@@ -9,6 +9,10 @@ type: php:7.1
 build:
     flavor: composer
 
+dependencies:
+    nodejs:
+        yarn: latest
+
 variables:
     env:
         # Tell Symfony to always install in production-mode.
@@ -20,9 +24,12 @@ hooks:
     build: |
         bin/console assets:install --no-debug
         bin/console cache:clear
+        yarn install
     deploy: |
         bin/console assets:install --symlink --relative public
         bin/console cache:clear
+        yarn run encore production
+        yarn run encore production --config webpack.config.serverside.js
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
