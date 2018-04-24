@@ -48,6 +48,44 @@ class Kernel extends BaseKernel
         $loader->load($confDir.'/{packages}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
+
+        $relationships = getenv("SENSIOCLOUD_RELATIONSHIPS");
+
+        if (!$relationships) {
+            return;
+        }
+
+        /* injecting SYMFONY__ params */
+        foreach ($_SERVER as $key => $value) {
+            if (0 === strpos($key, 'SYMFONY__')) {
+                $container->setParameter(strtolower(str_replace('__', '.', substr($key, 9))), $value);
+            }
+        }
+
+        $relationships = json_decode(base64_decode($relationships), true);
+
+        foreach ($relationships['database'] as $endpoint) {
+            if (empty($endpoint['query']['is_master'])) {
+                continue;
+            }
+
+            $container->setParameter('database_driver', 'pdo_'.$endpoint['scheme']);
+            $container->setParameter('database_host', $endpoint['host']);
+            $container->setParameter('database_port', $endpoint['port']);
+            $container->setParameter('database_name', $endpoint['path']);
+            $container->setParameter('database_user', $endpoint['username']);
+            $container->setParameter('database_password', $endpoint['password']);
+            $container->setParameter('database_path', '');
+        }
+
+        if (empty($relationships['redis'])) {
+            return;
+        }
+
+        $redis = array_shift($relationships['redis']);
+        $container->setParameter('redis_host', $redis['host']);
+        $container->setParameter('redis_port', $redis['port']);
+
     }
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
