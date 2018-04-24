@@ -58,7 +58,7 @@
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "chmod -R ug+w $APP_DIR/var"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
