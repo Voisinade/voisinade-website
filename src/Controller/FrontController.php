@@ -27,12 +27,8 @@ class FrontController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
             $subscriber = $form->getData();
 
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($subscriber);
             $entityManager->flush();
@@ -40,7 +36,7 @@ class FrontController extends Controller
             $subscriber = new \Welp\MailchimpBundle\Subscriber\Subscriber($subscriber->getEmail(), [], ['language' => 'fr']);
             $this->get('event_dispatcher')->dispatch(
                 SubscriberEvent::EVENT_SUBSCRIBE,
-                new SubscriberEvent('1de9e88e9e', $subscriber)
+                new SubscriberEvent(getenv('MAILCHIMP_LIST'), $subscriber)
             );
         }
 
