@@ -119,6 +119,12 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
+    "sonata-project/exporter": {
+        "version": "1.8.0"
+    },
+    "sonata-project/seo-bundle": {
+        "version": "2.5.1"
+    },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
         "recipe": {
