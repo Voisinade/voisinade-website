@@ -1,0 +1,25 @@
+sonata_seo:
+    encoding:         UTF-8
+    page:
+        title:            'Voisinade : Veille tech entre startup'
+        default:          sonata.seo.page.default
+        metas:
+            name:
+                keywords:             veille, voisinade
+                description:          Rencontrez et partagez vos expériences avec des sociétés voisines
+                robots:               index, follow
+
+            property:
+                'og:site_name':       Voisinade
+                'og:description':     Rencontrez et partagez vos expériences avec des sociétés voisines
+                'og:image':           https://www.voisinade.io/static/img/ogimg.jpg
+
+            http-equiv:
+                'Content-Type':         text/html; charset=utf-8
+
+            charset:
+                UTF-8:    ''
+
+        head:
+            'xmlns':              http://www.w3.org/1999/xhtml
+            'xmlns:og':           http://opengraphprotocol.org/schema/

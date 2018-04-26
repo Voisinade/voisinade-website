@@ -16,4 +16,5 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Welp\MailchimpBundle\WelpMailchimpBundle::class => ['all' => true],
+    Sonata\SeoBundle\SonataSeoBundle::class => ['all' => true],
 ];
