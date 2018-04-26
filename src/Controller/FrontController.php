@@ -20,8 +20,8 @@ class FrontController extends Controller
     {
         $subscriber = new Subscriber();
         $form = $this->createFormBuilder($subscriber)
-            ->add('email', EmailType::class)
-            ->add('save', SubmitType::class, array('label' => 'Rejoindre le mouvement'))
+            ->add('email', EmailType::class, ['label' => false, 'attr' => ['placeholder' => 'Votre email', 'type' => 'email', 'class' => 'form-control mb-3']])
+            ->add('save', SubmitType::class, ['label' => 'Rejoindre le mouvement', 'attr' => ['class' => 'btn btn-info']])
             ->getForm();
 
         $form->handleRequest($request);
@@ -38,6 +38,9 @@ class FrontController extends Controller
                 SubscriberEvent::EVENT_SUBSCRIBE,
                 new SubscriberEvent(getenv('MAILCHIMP_LIST'), $subscriber)
             );
+
+            return $this->render('front/thanks.html.twig');
+
         }
 
         return $this->render('front/index.html.twig', [
